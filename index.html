@@ -27,7 +27,23 @@
         </ul>
         <button id="btn">Add Project</button>
     </aside>
-    <main id="table"></main>
+    <main id="table">
+        <table id="table-project" class="table table-hover">
+            <thead class='table-header'>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Project name</th>
+                <th scope="col">Project type</th>
+                <th scope="col">Hourly wage</th>
+                <th scope="col">Due date</th>
+                <th scope="col">Days until the due date</th>
+                <th scope="col">Estimated total earned</th>
+                <th scope="col" id="del-project"></th>
+              </tr>
+            </thead>
+            <tbody id="project-table-body"></tbody>
+          </table>
+    </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
