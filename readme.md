@@ -1,120 +1,85 @@
-# Unit 05: Third-Party APIs
+# Mini Project: Project Tracker
 
-## Overview
+In this project, you will work with others to create a project tracker application using Bootstrap, jQuery, jQueryUI, Moment, and Google Fonts. Break up these phases amongst members of your team.
 
-When developers find themselves repeating a task, they tend to look for a way to simplify their workflow. We saw earlier how CSS frameworks were developed to ensure consistency across applications and to expedite developer workflows. Tools with similar goals have emerged in the JavaScript ecosystem. 
+## Instructions
 
-jQuery is a JavaScript library that simplifies DOM manipulation and event handling. It allows us to write fewer lines of code than if we were using plain old JavaScript. jQuery also provides a number of methods for animations and working with APIs.
+This mini-project is divided into four tasks. The first three tasks will get you to MVP, so focus on those first!
 
-Some developers might point out that jQuery is slowly being phased out and replaced with front-end frameworks such as React. It's true that you might not see as many job listings for jQuery developers specifically, but the library is still widely used in both new and legacy code&mdash;so it's an important skill to acquire.
+### Task 1: HTML Build
 
-## Key Topics
+1. Create a header/hero area that welcomes users to the application and displays the current time and date using Moment.js with `setInterval()`.
 
-We'll cover the following topics in this unit:
+2. Create a Bootstrap card component explaining the instructions of how to use the app and a button to open a [Bootstrap modal dialog](https://getbootstrap.com/docs/4.5/components/modal/).
 
-* [jQuery](https://api.jquery.com/)
+3. The modal should contain a form asking users to fill in the following data:
 
-  * [DOM traversal and manipulation](https://api.jquery.com/category/traversing/)
+    * The name of the project
 
-  * [Event handling](https://api.jquery.com/category/events/)
+    * The type of project (use a `<select>` drop-down)
 
-* [Bootstrap](https://getbootstrap.com)
+    * The hourly wage for the project
 
-* [Google fonts](https://fonts.google.com)
+    * The due date for the project (use jQuery UI's datepicker with a minimum date setting in place)
 
-* [jQuery UI](https://jqueryui.com/demos/)
+4. Include a Bootstrap table that the project's information can be printed to with columns for the following data:
 
-* [Moment.js](https://momentjs.com/docs/)
+    * Project name
 
-  * **Note**: `Moment.js` has historically been the most popular date/time library but is no longer supported by its developers. We will still cover it in this unit, but look under the "Resources" section below for other alternatives.
+    * Project type
 
-## Learning Objectives
+    * Hourly wage
 
-You'll be employer-competitive if you can do the following: 
+    * Due date
 
-* Explain and implement CDNs to leverage third-party APIs like CSS frameworks, JavaScript libraries, and custom fonts.
+    * Days until the due date (use Moment.js to calculate)
 
-* Use jQuery to perform DOM manipulation and traversals and implement interactivity using event handlers.
+    * Estimated total earned (hourly wage at 8 hours per day multiplied by the number of days until the due date)
 
-* Explain how to resolve issues related to dynamically generated HTML using jQuery.
+While you build, remember the following guidelines:
 
-* Explain and implement the Bootstrap grid layout in HTML.
+  * Ensure that any elements you need to interact with using JavaScript/jQuery are properly identified (e.g., form elements, the table body, etc.).
 
-* Integrate Bootstrap components in HTML files to quickly build user interfaces.
+  * Use different `<input>` element attributes to help enforce rules, like different `type` attribute values, minimum values, and required! See the [MDN web docs on the HTML input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) for more guidance.
 
-* Add custom styling to a CSS framework.
+  * When in doubt, read the Bootstrap documentation.
 
-* Implement jQuery UI to make a webpage more user-friendly.
+---
 
-* Use Moment.js to format dates and calculate time differences.
+### Task 2: Capture Form Data
 
-## Technical Interview Preparation
+1. Using jQuery, set up functionality to capture the form's input elements on submit and use that data to create a new table row on the page.
 
-You will be employer-competitive if you are able to solve the following algorithms and successfully complete the assessments.
+2. Select and save references to every DOM element we will interact with to a variable (i.e., `var projectFormEl = $("#project-form");`) so that we can use these elements later.
 
-### Algorithms
+3. Attach a submit event listener to the `<form>` element using jQuery.
 
-Practicing algorithm-based interview questions is one of the best ways to prepare for interviews. Watch the `📹 Let's Code` video(s) for tips and tricks on how to solve the algorithm.
+4. On submission, capture the four input values from the form and pass them to another function to handle printing project data. Having one function that captures the data and another that prints the data to the page's `<table>` element will improve code readability.
 
-* [01: Fizz Buzz](./03-Algorithms/01-fizz-buzz)
+---
 
-* [02: Max Num](./03-Algorithms/02-max-num)
+### Task 3: Print Project Data to Page
 
-  * [📹 Let's Code Max Num!](https://2u-20.wistia.com/medias/f9eao2cvjt)
+1. Create a function that will accept the four input fields' data as arguments.
 
-* [03: Vowel Count](./03-Algorithms/03-vowel-count)
+2. Create a table row (`<tr>`) element and save it to a variable.
 
-### Assessments
+3. Create a table detail (`<td>`) element for each of the table columns created in Task 1.
 
-Assess your knowledge by answering technical interview questions and solving coding challenges.
+4. For printing the days to the due date, use Moment.js to calculate the difference between the due date and the current time in days. 
 
-* [Unit 05 Assessment](https://forms.gle/c4pv2qUatMXs5rzZA)
+5. For printing the estimated total earned amount, assume that you work an eight-hour day. So multiply the hourly rate by 8 to get the daily rate, then multiply that value by how many days until the project is due to get the estimated total earned. 
 
-## Homework
+6. Append all `<td>` elements to the table row created, then append the entire row to the `<tbody>` element on the page.
 
-In the homework for this unit, you'll create a simple calendar application that allows the user to save events for each hour of the day. This app will run in the browser and feature dynamically updated HTML and CSS, powered by jQuery.
+7. Don't forget to close the modal when done!
 
-## Career Connection
+---
 
-This week's career services material can be found in this unit's [Career Connection folder](./04-Career-Connection/README.md). For more information about career services, including coding milestones, demo days, technical toolkits, workshops, and additional resources, visit the [career services website](https://careernetwork.2u.com/?utm_medium=Academics&utm_source=boot_camp/).
+### Task 4: Delete a Project From the Table
 
-## Heads-Up
+1. Update the table to accommodate one more column without a name.
 
-In the next unit, you'll use the jQuery AJAX method to make requests to server-side APIs. 
+2. When generating a new `<tr>` for a project, add one more `<td>` that holds a button for deleting a project from the list.
 
-## Resources
-
-Here are some additional resources to help solidify the topics covered in this unit.
-
-### Code Review Videos
-
-Watch the `📹 Code Review` video(s) to help you grasp the concept of each topic.
-
-  * [📹 Code Review: jQuery!](https://2u-20.wistia.com/medias/g63k1z1sb3)
-
-  * [📹 Code Review: Bootstrap!](https://2u-20.wistia.com/medias/e8xteir5a7)
-
-  * [📹 Code Review: jQuery UI and Moment.js!](https://2u-20.wistia.com/medias/5hp2hoodod)
-
-### Git Guide
-
-Refer to the Git Guide to review the git concept for this unit. Watch the `📹 Git Guide` video for an additional walkthrough of the git concept.
-
-  * 📖 [Git Guide: Git Revert](./01-Activities/27-Evr_Git-Revert)
-
-  * 📹 [Git Guide Video: Git Revert](https://2u-20.wistia.com/medias/r60i2dwhrw)
-
-### General
-
-Here are some alternative date/time libraries you can look into:
-
-  * 📖 [Luxon](https://moment.github.io/luxon/)
-
-  * 📖 [Day.js](https://day.js.org/)
-
-  * 📖 [date-fns](https://date-fns.org/)
-
-  * 📖 [js-Joda](https://js-joda.github.io/js-joda/)
-
-- - -
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+3. Use jQuery event delegation to attach an event listener to each of those buttons so that when clicked, the parent `<tr>` element will be removed from the page.
