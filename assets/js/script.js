@@ -14,7 +14,9 @@ function addNewProject(name,type,wage,dueDate) {
 
 function populateTable() {
     let tableBody = $('#project-table-body');
-
+    tableBody.children('tr').remove();
+    var size = tableBody.find("tr").length;
+    console.log(size);
     for(let i=0;i<projectList.length; i++){
         let newTr = $('<tr>');
         newTr.addClass("table-row");
@@ -47,7 +49,7 @@ function populateTable() {
         newTr.append(newCol6);
         let newCol7 = $('<td>');
         newCol7.html("X");
-        newCol7.on("click", function(){deleteProject(i);});
+        newCol7.on("click", function(event){deleteProject(event,i);});
         newTr.append(newCol7);
 
         tableBody.append(newTr);
@@ -56,11 +58,12 @@ function populateTable() {
     
 }
 
-function deleteProject (index) {
+function deleteProject (event,index) {
     console.log("Here: "+index);
 	projectList.splice(index, 1);
     console.log(projectList);
     populateTable();
+    //$(event.target).parent('<tr>').remove();
 }; 
 
 init();
